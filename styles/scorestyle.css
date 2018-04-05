@@ -1,0 +1,102 @@
+.centerdiv{
+	margin:0 auto;
+	display:block;
+	width:75%;
+}
+
+#rankdiv{
+   display: inline-block;
+   padding: 20px;
+   border: solid 2px yellow;
+   background-color:green;
+   box-shadow: 5px 10px 10px #666666;
+
+}
+
+.rankheader{
+	height:15%;
+}
+
+.rankheader>h1{
+	text-align:center; color: white;
+}
+
+.rankheader>p{
+	padding-left:5%;
+	padding-right:5%;
+	color:white;
+}
+
+.rankchoices{
+  background-color: #5CCC00;
+  height:inherit;
+  width: 49%;
+  float:left;
+  border: solid 1px yellow;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  box-shadow: 5px 10px 10px black;
+
+}
+
+#ranklist>li{
+  font-size: 20px;
+  margin-top: 4px;
+  margin-left: 10%;
+}
+
+.rankchoices>button{
+  width: 50%;
+  padding: 5px;
+  border-radius: 25px;
+  border-color: white;
+  border-width: 3px;
+  color:white;
+  background-color: #00af00;
+  display: block;
+  margin: 0 auto;
+  font-weight:bolder;
+}
+
+.rankchoices>button:hover{
+  color:black;
+  background-color: #FFFF00;
+  border-color:black;
+  font-weight:bolder;
+}
+
+#rankresponses{
+  background-color: #5CCC00;
+  height:inherit;
+  width:49%;
+  float:right;
+  border: solid 1px yellow;
+  box-shadow: 5px 10px 10px black;
+  height: 100%;
+
+}
+#rankresponses>h3, #rankresponses>h2{
+  text-align:center;
+}
+
+#rankresponsesubmit{
+  margin: 0 auto;
+  visibility:hidden;
+  display: block;
+}
+
+.scorediv{
+   margin-top: 2%;
+   text-align: center;
+   bottom: 0;
+}
+
+.scorediv>h2{
+	display:inline;
+	margin:auto
+}
+#scoreoutput{
+	display:inline;
+	color:red;
+	margin:auto;
+}

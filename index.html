@@ -2,10 +2,12 @@
 <!-- Ctrl-alt-3 to start server -->
 <html>
   <head>
-    <script src = "script.js"></script>
-    <link rel = "stylesheet" href = "style.css" />
+    <script src = "scripts/script.js"></script>
+    <link rel = "stylesheet" href = "styles/forum.css" />
+    <link rel = "stylesheet" href = "styles/scorestyle.css" />
+    <link rel = "stylesheet" href = "styles/about.css" />
     <title>
-      Project 2
+      Jesus' Son
     </title>
   </head>
   <body onload = "initPage()">
@@ -14,18 +16,18 @@
         <h2>Title: Jesus' Son</h2>
         <h2>Author: <a href = "https://en.wikipedia.org/wiki/Denis_Johnson">Denis Johnson</a></h2>
         <h2>Year Published: December 1992</h2>
-        <img id = "denisjohnsonimages" class = "denisjohnson"/>
+        <img alt = "Denis Johnson" id = "denisjohnsonimages" class = "denisjohnson"/>
       </div>
       <div class = "coverdiv">
-        <img src = "cover.jpg"  />
+        <img src = "cover.jpg" />
       </div>
     </div>
 
-    <div style = "margin:0 auto; display:block; width:75%;">
+    <div class = "centerdiv">
       <div id = "rankdiv">
-        <div style = "height:15%;">
-          <h1 style = "text-align:center; color: white;">When Did They Happen?</h1>
-          <p style = "padding-left:5%;padding-right:5%; color:white">
+        <div class = "rankheader">
+          <h1>When Did They Happen?</h1>
+          <p>
              Jesus' Son jumps around with every chapter so lets see how well you
              know the order of what happened. Click on a chapter to add it to the end
              of the list of the right. Click on the chapter again to remove the chapter from
@@ -65,8 +67,8 @@
           <h3>Last</h3>
           <button id = "rankresponsesubmit" onclick = "ranksubmit()">Submit</button>
           <div class = "scorediv">
-            <h2 style = "display:inline; margin:auto">Score:</h2>
-            <h2 style = "display:inline; color:red; margin:auto" id = "scoreoutput">0</h2>
+            <h2>Score:</h2>
+            <h2 id = "scoreoutput">0</h2>
           </div>
         </div>
       </div>
@@ -82,11 +84,6 @@
       <div class = "forumposts" id = "forumpost">
          <h1 style = "text-align:center" id = "forumheader"></h1>
       </div>
-   </div>
-   <div>
-      <input id = 'username'/>
-      <input id = 'password' />
-      <button type="button" onclick="adminunlock()">Unlock</button>
    </div>
   </body>
 </html>

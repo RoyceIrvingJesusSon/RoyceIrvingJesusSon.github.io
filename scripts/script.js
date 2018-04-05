@@ -1,57 +1,64 @@
 var denisjohnsonimages = ["denisjohnson1.jpg","denisjohnson2.jpg"];
 var img = 0;
 
-var adminmode = false;
-
-
 function submitforumpost()
 {
-  var name = document.getElementById('forumname').value;
-  var text = document.getElementById('forumresponse').value;
-  if (name === "" || text === ""){
-    alert("Please fill out both name and text boxes.");
-    return;
-  }
-  else{
+   //Grab info
+   var t = new Date();
+   var name = document.getElementById('forumname').value;
+   var text = document.getElementById('forumresponse').value;
+   //were they empty
+   if (name === "" || text === ""){
+      alert("Please fill out both name and text boxes.");
+      return;
+   }
+   else{
+      //make newlines visible
+      text = text.replace(/\r?\n/g, '<br />');
 
-    document.getElementById('forumheader').innerHTML="";
+      //Clear out 'no posts yet' comment
+      document.getElementById('forumheader').innerHTML="";
 
-    var node = document.createElement("div");
+      //make the div we will add to "post area"
+      var node = document.createElement("div");
 
-
-    var t = new Date();
-    var time = t.getMonth()+1 + "/" + t.getDate() + "/" + t.getFullYear()
-      + " - " + t.getHours() + ":";
+      //Create the time stamp
+      var time = t.getMonth()+1 + "/" + t.getDate() + "/" + t.getFullYear()
+         + " - " + t.getHours() + ":";
       if(t.getMinutes() < 10){
-        time += "0";
+         time += "0";
       }
       time+=t.getMinutes();
-    var datenode = document.createElement("p");
-    datenode.innerHTML = time;
-    datenode.style.display = "inline-block";
-    datenode.style.float = "right";
-    datenode.style.fontSize = "12px";
 
-    var namenode = document.createElement("b");
-    namenode.innerHTML = name + ":"
-    namenode.style.display = "inline";
-    namenode.style.float = "left";
+      //Create timestamp node
+      var datenode = document.createElement("p");
+      datenode.innerHTML = time;
+      datenode.style.display = "inline-block";
+      datenode.style.float = "right";
+      datenode.style.fontSize = "12px";
 
-    var textnode = document.createElement("a");
-    textnode.innerHTML = text;
+      //Create namenode
+      var namenode = document.createElement("b");
+      namenode.innerHTML = name + ":"
+      namenode.style.display = "inline";
+      namenode.style.float = "left";
 
+      //create textnode
+      var textnode = document.createElement("a");
+      textnode.innerHTML = text;
 
-    node.appendChild(namenode);
-    node.appendChild(datenode);
-    node.appendChild(document.createElement("br"));
-    node.appendChild(textnode);
+      //append them to node
+      node.appendChild(namenode);
+      node.appendChild(datenode);
+      node.appendChild(document.createElement("br"));
+      node.appendChild(textnode);
 
-    node.onmousedown
+      //add node to forum area
+      document.getElementById("forumpost").appendChild(node);
 
-    document.getElementById("forumpost").appendChild(node);
-
-    document.getElementById('forumname').value = "";
-    document.getElementById('forumresponse').value = "";
+      //clear out post area
+      document.getElementById('forumname').value = "";
+      document.getElementById('forumresponse').value = "";
 
   }
 }
@@ -91,8 +98,8 @@ function ranksubmit(){
    //console.log((score/11).toFixed(2));
 }
 
-function tryme(id){
-  alert(id);
+function tryme(){
+  alert("hey");
 }
 
 function changeimage(){
@@ -105,22 +112,8 @@ function initPage(){
   document.getElementById("denisjohnsonimages").src = denisjohnsonimages[1];
   setInterval(function(){ changeimage(); },10000);
   var numposts = document.getElementById("forumpost").childNodes.length;
-  console.log(numposts);
+  //console.log(numposts);
   if(numposts <= 3){
     document.getElementById("forumheader").innerHTML = "No posts yet!";
   }
-}
-
-function adminunlock(){
-   var uname = document.getElementById('username');
-   var pword = document.getElementById('password');
-   if(uname.value != pword.value && !adminmode){
-      alert("locked");
-      adminmode = false;
-      return;
-   }
-   alert("unlocked");
-   adminmode = true;
-
-
 }
