@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<!-- Ctrl-alt-3 to start server -->
+<html>
+  <head>
+    <script src = "script.js"></script>
+    <link rel = "stylesheet" href = "style.css" />
+    <title>
+      Project 2
+    </title>
+  </head>
+  <body onload = "initPage()">
+    <div class = "aboutdiv">
+      <div class = "infodiv">
+        <h2>Title: Jesus' Son</h2>
+        <h2>Author: <a href = "https://en.wikipedia.org/wiki/Denis_Johnson">Denis Johnson</a></h2>
+        <h2>Year Published: December 1992</h2>
+        <img id = "denisjohnsonimages" class = "denisjohnson"/>
+      </div>
+      <div class = "coverdiv">
+        <img src = "cover.jpg"  />
+      </div>
+    </div>
+
+    <div style = "margin:0 auto; display:block; width:75%;">
+      <div id = "rankdiv">
+        <div style = "height:15%;">
+          <h1 style = "text-align:center; color: white;">When Did They Happen?</h1>
+          <p style = "padding-left:5%;padding-right:5%; color:white">
+             Jesus' Son jumps around with every chapter so lets see how well you
+             know the order of what happened. Click on a chapter to add it to the end
+             of the list of the right. Click on the chapter again to remove the chapter from
+             the list. When all chapters have been put in order, the submit button will appear to
+             check your score.
+          </p>
+        </div>
+        <div class = "rankchoices">
+          <h2 style = "text-align:center">Chapters</h2>
+          <button  id = "ch1" onclick = "addtolist(this.id)">Car Crash While Hitchhiking</button>
+          <br />
+          <button  id = "ch2" onclick = "addtolist(this.id)">Two Men</button>
+          <br />
+          <button  id = "ch3" onclick = "addtolist(this.id)">Out on Bail</button>
+          <br />
+          <button  id = "ch4" onclick = "addtolist(this.id)">Dundun</button>
+          <br />
+          <button  id = "ch5" onclick = "addtolist(this.id)">Work</button>
+          <br />
+          <button  id = "ch6" onclick = "addtolist(this.id)">Emergency</button>
+          <br />
+          <button  id = "ch7" onclick = "addtolist(this.id)">Dirty Wedding</button>
+          <br />
+          <button  id = "ch8" onclick = "addtolist(this.id)">The Other Man</button>
+          <br />
+          <button  id = "ch9" onclick = "addtolist(this.id)">Happy Hour</button>
+          <br />
+          <button  id = "ch10" onclick = "addtolist(this.id)">Steady Hands at Seattle General</button>
+          <br />
+          <button  id = "ch11" onclick = "addtolist(this.id)">Beverly Home</button>
+        </div>
+        <div id = "rankresponses" >
+          <h2>Response</h2>
+          <h3>First</h3>
+          <ol id = "ranklist">
+          </ol>
+          <h3>Last</h3>
+          <button id = "rankresponsesubmit" onclick = "ranksubmit()">Submit</button>
+          <div class = "scorediv">
+            <h2 style = "display:inline; margin:auto">Score:</h2>
+            <h2 style = "display:inline; color:red; margin:auto" id = "scoreoutput">0</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <div class = "forumdiv">
+      <div class = "forumentry" onmouse>
+         <b>Name:</b> <input placeholder="Johnny Appleseed" id = "forumname" />
+         <textarea placeholder="Write your post here" id = "forumresponse"></textarea>
+         <br />
+         <button class = "forumsubmitbutton" onclick="submitforumpost()">Submit</button>
+      </div>
+      <div class = "forumposts" id = "forumpost">
+         <h1 style = "text-align:center" id = "forumheader"></h1>
+      </div>
+   </div>
+   <div>
+      <input id = 'username'/>
+      <input id = 'password' />
+      <button type="button" onclick="adminunlock()">Unlock</button>
+   </div>
+  </body>
+</html>

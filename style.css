@@ -1,0 +1,190 @@
+.aboutdiv{
+  display: block;
+  margin: 0 auto 15px;
+  height: 400px;
+  border: solid 2px yellow;
+  background-color: green;
+  width:75%;
+  box-shadow: 5px 10px 10px #666666;
+  padding: 10px;
+}
+
+.infodiv{
+  float:left;
+  width: 49%;
+  height: inherit;
+}
+
+.infodiv>h2{
+  color:white;
+}
+
+.coverdiv{
+  float:right;
+  height: inherit;
+  width:49%;
+}
+
+.coverdiv>img{
+  display:block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.denisjohnson{
+  margin: 0 auto;
+  display block;
+  max-width:60%;
+  max-height:60%;
+  box-shadow: 5px 10px 10px black;
+
+}
+
+#rankdiv{
+   display: inline-block;
+   padding: 20px;
+   border: solid 2px yellow;
+   background-color:green;
+   box-shadow: 5px 10px 10px #666666;
+
+}
+.rankchoices{
+  background-color: #5CCC00;
+  height:inherit;
+  width: 49%;
+  float:left;
+  border: solid 1px yellow;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  box-shadow: 5px 10px 10px black;
+
+}
+#ranklist>li{
+  font-size: 20px;
+  margin-top: 4px;
+  margin-left: 10%;
+}
+.rankchoices>button{
+  width: 50%;
+  padding: 5px;
+  border-radius: 25px;
+  border-color: white;
+  border-width: 3px;
+  color:white;
+  background-color: #00af00;
+  display: block;
+  margin: 0 auto;
+  font-weight:bolder;
+}
+
+.rankchoices>button:hover{
+  color:black;
+  background-color: #FFFF00;
+  border-color:black;
+  font-weight:bolder;
+}
+
+#rankresponses{
+  background-color: #5CCC00;
+  height:inherit;
+  width:49%;
+  float:right;
+  border: solid 1px yellow;
+  box-shadow: 5px 10px 10px black;
+  height: 100%;
+
+}
+#rankresponses>h3, #rankresponses>h2{
+  text-align:center;
+}
+
+#rankresponsesubmit{
+  margin: 0 auto;
+  visibility:hidden;
+  display: block;
+}
+
+.scorediv{
+   margin-top: 2%;
+   text-align: center;
+   bottom: 0;
+}
+
+.forumdiv{
+   box-shadow: 5px 10px 10px #666666;
+   background-color: green;
+   display: block;
+   margin: 15px auto;
+   width: 75%;
+   outline: solid 4px yellow;
+   position:inherit;
+   padding: 15px;
+}
+
+.forumentry
+{
+  margin: 10px auto;
+  outline: solid 2px yellow;
+  padding: 10px;
+  width: 50%;
+  height: auto;
+  box-shadow: 5px 10px 10px black;
+  background-color: #5CCC00;
+}
+
+.forumsubmitbutton
+{
+  display:block;
+  margin: 0 auto;
+}
+
+#forumname{
+   border-radius: 20px;
+   padding:5px;
+}
+
+.forumentry>textarea
+{
+  display:block;
+  border: solid 2px black;
+  box-shadow: 2px 2px 3px black;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 100px;
+  max-width: 95%;
+  min-width: 75%;
+  margin: 10px auto 0 auto;
+  max-height: 250px;
+  padding:2px;
+}
+
+.forumposts{
+  display: block;
+  margin: 10px auto;
+  border: solid 2px yellow;
+  min-height: 200px;
+  box-shadow: 5px 10px 10px black;
+  background-color: #5CCC00;
+
+}
+
+.forumposts>div{
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  border: solid 2px gray;
+  width: 75%;
+  min-height: 50px;
+  background-color: #ffffff;
+  box-shadow: 5px 10px 10px black;
+
+}
+
+.forumposts>div>b{
+
+}
+
+.forumposts>div>p{
+  text-align: center;
+}
