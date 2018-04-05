@@ -103,13 +103,13 @@ function tryme(){
 }
 
 function changeimage(){
-  document.getElementById("denisjohnsonimages").src = denisjohnsonimages[img];
+  document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[img];
   img += 1;
   img = img%2;
 }
 
 function initPage(){
-  document.getElementById("denisjohnsonimages").src = denisjohnsonimages[1];
+  document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[1];
   setInterval(function(){ changeimage(); },10000);
   var numposts = document.getElementById("forumpost").childNodes.length;
   //console.log(numposts);
