@@ -75,7 +75,7 @@ function submitforumpost()
       $.ajax({
          url:"https://docs.google.com/spreadsheets/d/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/edit#gid=0",
          data:senddata,
-         type:"PUT",
+         type:"POST",
          dataType:"xml"
       });
 
