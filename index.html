@@ -4,6 +4,9 @@
   <head>
     <link rel = "icon" type = "image/x-icon" href = "images/icon.png" />
     <script src = "scripts/script.js"></script>
+    <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDT5E2nC5b-JuJwhXBuXFVPO6OWFNM1Jvs&callback=initMap"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.4/dist/sheetrock.min.js"></script>
     <link rel = "stylesheet" href = "styles/forum.css" />
     <link rel = "stylesheet" href = "styles/scorestyle.css" />
     <link rel = "stylesheet" href = "styles/about.css" />
@@ -12,6 +15,9 @@
     </title>
   </head>
   <body onload = "initPage()">
+
+
+
     <div class = "aboutdiv">
       <div class = "infodiv">
         <h2>Title: Jesus' Son</h2>
@@ -67,10 +73,6 @@
           </ol>
           <h3>Last</h3>
           <button id = "rankresponsesubmit" onclick = "ranksubmit()">Submit</button>
-          <div class = "scorediv">
-            <h2>Score:</h2>
-            <h2 id = "scoreoutput">0</h2>
-          </div>
         </div>
       </div>
     </div>
@@ -86,5 +88,12 @@
          <h1 style = "text-align:center" id = "forumheader"></h1>
       </div>
    </div>
+
+   <table id = "postquery" style = "display:"></table>
+
+   </table>
+
+   </table>
+
   </body>
 </html>

@@ -1,5 +1,6 @@
 var denisjohnsonimages = ["denisjohnson1.jpg","denisjohnson2.jpg"];
 var img = 0;
+var imported;
 
 function submitforumpost()
 {
@@ -60,8 +61,28 @@ function submitforumpost()
       document.getElementById('forumname').value = "";
       document.getElementById('forumresponse').value = "";
 
+      var senddata = { Name: name, Post: text, Time: time };
+
+      // $.ajax({
+      //    url:"https://docs.google.com/spreadsheets/d/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/edit?usp=sharing",
+      //    data:senddata,
+      //    type:"PUT",
+      //    dataType:"xml"
+      // });
+
+      var request = new XMLHttpRequest();
+      var d = new Date();
+      var n = d.getTime();
+      var url = "https://docs.google.com/spreadsheets/d/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/edit?usp=sharing";
+      var data =senddata;
+      request.open('POST', url, true);
+      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+      request.send(data);
+
+
   }
 }
+
 
 function addtolist(id){
   var ranklist = document.getElementById("ranklist");
@@ -82,25 +103,10 @@ function addtolist(id){
   }
 }
 
-function ranksubmit(){
-   var answers= ["Car Crash While Hitchhiking","Two Men","Out on Bail",
-      "Dundun","Work","Emergency","Dirty Wedding","The Other Man","Happy Hour",
-      "Steady Hands at Seattle General","Beverly Home"];
-   var responses = document.getElementById("ranklist").childNodes;
-   var score = 0;
-   for(c = 0; c < 11; c+=1){
-      //console.log( "*" + responses[c+1].innerHTML + "* - " + answers[c+1]);
-      if(responses[c+1].innerHTML === answers[c]){
-         score+=1;
-      }
-   }
-   document.getElementById("scoreoutput").innerHTML = (score/11).toFixed(2)*100;
-   //console.log((score/11).toFixed(2));
-}
-
-function tryme(){
-  alert("hey");
-}
+// function ranksubmit(){
+//    var responses = document.getElementById("ranklist").childNodes;
+//    responses[c+1].innerHTML){
+// }
 
 function changeimage(){
   document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[img];
@@ -109,11 +115,62 @@ function changeimage(){
 }
 
 function initPage(){
+
+   document.getElementById("forumheader").innerHTML = "Loading...";
+
   document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[1];
   setInterval(function(){ changeimage(); },10000);
-  var numposts = document.getElementById("forumpost").childNodes.length;
-  //console.log(numposts);
-  if(numposts <= 3){
-    document.getElementById("forumheader").innerHTML = "No posts yet!";
+
+  imported = document.createElement('script');
+  document.head.appendChild(imported);
+
+  var url = "https://sheetsu.com/apis/v1.0su/757550d6e39d";
+  $.ajax({ url: url, success: fillPosts });
+
+  function fillPosts(data){
+      //console.log("# Posts: " +data.length);
+      //console.log(data[0]['Name']);
+      for(c = 0; c < data.length; c+=1){
+         var node = document.createElement("div");
+
+         //Create timestamp node
+         var datenode = document.createElement("p");
+         datenode.innerHTML = data[c]['Time'];
+         datenode.style.display = "inline-block";
+         datenode.style.float = "right";
+         datenode.style.fontSize = "12px";
+
+         //Create namenode
+         var namenode = document.createElement("b");
+         namenode.innerHTML = data[c]['Name'] + ":"
+         namenode.style.display = "inline";
+         namenode.style.float = "left";
+
+         //create textnode
+         var textnode = document.createElement("a");
+         textnode.innerHTML = data[c]["Post"];
+
+         //append them to node
+         node.appendChild(namenode);
+         node.appendChild(datenode);
+         node.appendChild(document.createElement("br"));
+         node.appendChild(textnode);
+
+         //add node to forum area
+         document.getElementById("forumpost").appendChild(node);
+      }
+
+      var numposts = document.getElementById("forumpost").childNodes.length;
+
+      //console.log(numposts);
+      if(numposts <= 3){
+        document.getElementById("forumheader").innerHTML = "No posts yet!";
+      }
+      else{
+         document.getElementById("forumheader").innerHTML = "";
+
+      }
   }
+
+
 }
