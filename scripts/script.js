@@ -2,6 +2,15 @@ var denisjohnsonimages = ["denisjohnson1.jpg","denisjohnson2.jpg"];
 var img = 0;
 var imported;
 
+function initMap(){}
+
+$(() => {
+  initMap = function() {
+    // your code like...
+    // and other stuff...
+  }
+})
+
 function submitforumpost()
 {
    //Grab info
@@ -63,21 +72,12 @@ function submitforumpost()
 
       var senddata = { Name: name, Post: text, Time: time };
 
-      // $.ajax({
-      //    url:"https://docs.google.com/spreadsheets/d/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/edit?usp=sharing",
-      //    data:senddata,
-      //    type:"PUT",
-      //    dataType:"xml"
-      // });
-
-      var request = new XMLHttpRequest();
-      var d = new Date();
-      var n = d.getTime();
-      var url = "https://docs.google.com/spreadsheets/d/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/edit?usp=sharing";
-      var data =senddata;
-      request.open('POST', url, true);
-      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-      request.send(data);
+      $.ajax({
+         url:"https://docs.google.com/spreadsheets/d/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/edit?usp=sharing",
+         data:senddata,
+         type:"PUT",
+         dataType:"xml"
+      });
 
 
   }
@@ -103,11 +103,6 @@ function addtolist(id){
   }
 }
 
-// function ranksubmit(){
-//    var responses = document.getElementById("ranklist").childNodes;
-//    responses[c+1].innerHTML){
-// }
-
 function changeimage(){
   document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[img];
   img += 1;
@@ -116,7 +111,7 @@ function changeimage(){
 
 function initPage(){
 
-   document.getElementById("forumheader").innerHTML = "Loading...";
+  document.getElementById("forumheader").innerHTML = "Loading...";
 
   document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[1];
   setInterval(function(){ changeimage(); },10000);
@@ -168,9 +163,6 @@ function initPage(){
       }
       else{
          document.getElementById("forumheader").innerHTML = "";
-
       }
   }
-
-
 }
