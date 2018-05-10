@@ -73,11 +73,10 @@ function submitforumpost()
       var senddata = { Name: name, Post: text, Time: time };
 
       $.ajax({
-         url:"https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A1:append?includeValuesInResponse=false&insertDataOption=INSERT_ROWS&responseDateTimeRenderOption=SERIAL_NUMBER&responseValueRenderOption=FORMATTED_VALUE&valueInputOption=USER_ENTERED&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",
+         url:"https://docs.google.com/spreadsheets/d/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/edit#gid=0",
          data:senddata,
          type:"PUT",
          dataType:"xml"
-         key="AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A"
       });
 
 
