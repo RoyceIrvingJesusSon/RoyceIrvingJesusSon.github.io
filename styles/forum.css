@@ -51,6 +51,8 @@
   margin: 10px auto;
   border: solid 2px yellow;
   min-height: 200px;
+  max-height: 750px;
+  overflow-y:auto;
   box-shadow: 5px 10px 10px black;
   background-color: #5CCC00;
 

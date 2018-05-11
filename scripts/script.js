@@ -105,7 +105,7 @@ function fillPosts(){
    var postarray = response["values"];
    //console.log(response["values"].length);
 
-   for(c = 1; c < postarray.length; c+=1){
+   for(c = postarray.length-1; c > 0; c-=1){
       var node = document.createElement("div");
 
       //Create timestamp node
