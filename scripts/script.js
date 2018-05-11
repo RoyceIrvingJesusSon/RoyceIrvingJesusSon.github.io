@@ -63,9 +63,8 @@ function submitforumpost()
       document.getElementById('forumresponse').value = "";
 
       var xmlHttp = new XMLHttpRequest();
-      xmlHttp.open("PUT","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A6?includeValuesInResponse=false&responseDateTimeRenderOption=FORMATTED_STRING&responseValueRenderOption=FORMATTED_VALUE&valueInputOption=USER_ENTERED&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",false);
+      xmlHttp.open("POST","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A1:append?includeValuesInResponse=false&insertDataOption=INSERT_ROWS&responseDateTimeRenderOption=FORMATTED_STRING&responseValueRenderOption=FORMATTED_VALUE&valueInputOption=USER_ENTERED&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",true);
       xmlHttp.send(null);
-
 
   }
 }
@@ -96,43 +95,35 @@ function changeimage(){
   img = img%2;
 }
 
-function initPage(){
+function fillPosts(){
 
    var xmlHttp = new XMLHttpRequest();
-   xmlHttp.open("GET","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A2%3AC?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",false);
+   xmlHttp.open("GET","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A1%3AC?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",false);
    xmlHttp.send(null);
    var data = xmlHttp.responseText;
    var response = JSON.parse(data);
    var postarray = response["values"];
-   //console.log(response["values"]);
+   //console.log(response["values"].length);
 
-  document.getElementById("forumheader").innerHTML = "Loading...";
-
-  document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[1];
-  setInterval(function(){ changeimage(); },10000);
-
-  imported = document.createElement('script');
-  document.head.appendChild(imported);
-
-   for(c = 0; c < postarray.length; c+=1){
+   for(c = 1; c < postarray.length; c+=1){
       var node = document.createElement("div");
 
       //Create timestamp node
       var datenode = document.createElement("p");
-      datenode.innerHTML = postarray[c][2];
+      datenode.innerHTML = postarray[c][0];
       datenode.style.display = "inline-block";
       datenode.style.float = "right";
       datenode.style.fontSize = "12px";
 
       //Create namenode
       var namenode = document.createElement("b");
-      namenode.innerHTML = postarray[c][0] + ":"
+      namenode.innerHTML = postarray[c][1] + ":"
       namenode.style.display = "inline";
       namenode.style.float = "left";
 
       //create textnode
       var textnode = document.createElement("a");
-      textnode.innerHTML = postarray[c][1];
+      textnode.innerHTML = postarray[c][2];
 
       //append them to node
       node.appendChild(namenode);
@@ -153,5 +144,25 @@ function initPage(){
    else{
       document.getElementById("forumheader").innerHTML = "";
    }
+
+}
+
+function initPage(){
+
+
+
+  document.getElementById("forumheader").innerHTML = "Loading...";
+
+  fillPosts();
+
+  document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[1];
+  setInterval(function(){ changeimage(); },100);
+
+  imported = document.createElement('script');
+  document.head.appendChild(imported);
+
+
+
+
 
 }

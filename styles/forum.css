@@ -71,3 +71,12 @@
 .forumposts>div>p{
   text-align: center;
 }
+
+.googleform{
+   width: 75%;
+   margin: 0 auto;
+   min-height:500px;
+   display:block;
+   box-shadow: 5px 10px 10px #000000;
+   border: solid 4px #00a400;
+}
