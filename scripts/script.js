@@ -114,7 +114,7 @@ function changeimage(){
 function initPage(){
 
    var xmlHttp = new XMLHttpRequest();
-   xmlHttp.open("GET","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY?includeGridData=false&ranges=A1&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",false);
+   xmlHttp.open("GET","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A1%3AC2?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",false);
    xmlHttp.send(null);
    console.log(xmlHttp.responseText);
 
