@@ -153,10 +153,11 @@ function initPage(){
 
   document.getElementById("forumheader").innerHTML = "Loading...";
 
-  fillPosts();
+  fillPosts(); //leaving this like it is for now for future uses where I may want to call this multiple times
+
 
   document.getElementById("denisjohnsonimages").src = "images/" + denisjohnsonimages[1];
-  setInterval(function(){ changeimage(); },100);
+  setInterval(function(){ changeimage(); },10000);
 
   imported = document.createElement('script');
   document.head.appendChild(imported);
