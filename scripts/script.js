@@ -62,24 +62,9 @@ function submitforumpost()
       document.getElementById('forumname').value = "";
       document.getElementById('forumresponse').value = "";
 
-      // var senddata = [[name,text,time]];
-      // var body = {
-      //   values: senddata
-      // };
-      // gapi.client.sheets.spreadsheets.values.update({
-      //    spreadsheetId: "1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY",
-      //    range: "A1",
-      //    valueInputOption: USER_ENTERED,
-      //    resource: body
-      // }).then((response) => {
-      //    var result = response.result;
-      //    console.log("${result.updateCells} cells updated.");
-      // });
-      // $.ajax({
-      //    url:"https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A1:append?includeValuesInResponse=false&insertDataOption=INSERT_ROWS&responseDateTimeRenderOption=SERIAL_NUMBER&responseValueRenderOption=FORMATTED_VALUE&valueInputOption=USER_ENTERED&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",
-      //    "values":senddata,
-      //    type:"POST"
-      // });
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open("PUT","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A6?includeValuesInResponse=false&responseDateTimeRenderOption=FORMATTED_STRING&responseValueRenderOption=FORMATTED_VALUE&valueInputOption=USER_ENTERED&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",false);
+      xmlHttp.send(null);
 
 
   }
@@ -114,9 +99,12 @@ function changeimage(){
 function initPage(){
 
    var xmlHttp = new XMLHttpRequest();
-   xmlHttp.open("GET","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A2%3AC2?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",false);
+   xmlHttp.open("GET","https://sheets.googleapis.com/v4/spreadsheets/1lFXnDNI31qw8A4GAR7sDnMZZsSuRNUJIkv1b5WXn0WY/values/A2%3AC?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=AIzaSyCTJUdajGttZC9lALSEt4Vja4Z_Qm4ds0A",false);
    xmlHttp.send(null);
-   console.log(xmlHttp.responseText["values"]);
+   var data = xmlHttp.responseText;
+   var response = JSON.parse(data);
+   var postarray = response["values"];
+   //console.log(response["values"]);
 
   document.getElementById("forumheader").innerHTML = "Loading...";
 
@@ -126,47 +114,44 @@ function initPage(){
   imported = document.createElement('script');
   document.head.appendChild(imported);
 
-  // function fillPosts(data){
-  //     //console.log("# Posts: " +data.length);
-  //     //console.log(data[0]['Name']);
-  //     for(c = 0; c < data.length; c+=1){
-  //        var node = document.createElement("div");
-  //
-  //        //Create timestamp node
-  //        var datenode = document.createElement("p");
-  //        datenode.innerHTML = data[c]['Time'];
-  //        datenode.style.display = "inline-block";
-  //        datenode.style.float = "right";
-  //        datenode.style.fontSize = "12px";
-  //
-  //        //Create namenode
-  //        var namenode = document.createElement("b");
-  //        namenode.innerHTML = data[c]['Name'] + ":"
-  //        namenode.style.display = "inline";
-  //        namenode.style.float = "left";
-  //
-  //        //create textnode
-  //        var textnode = document.createElement("a");
-  //        textnode.innerHTML = data[c]["Post"];
-  //
-  //        //append them to node
-  //        node.appendChild(namenode);
-  //        node.appendChild(datenode);
-  //        node.appendChild(document.createElement("br"));
-  //        node.appendChild(textnode);
-  //
-  //        //add node to forum area
-  //        document.getElementById("forumpost").appendChild(node);
-  //     }
-  //
-  //     var numposts = document.getElementById("forumpost").childNodes.length;
-  //
-  //     //console.log(numposts);
-  //     if(numposts <= 3){
-  //       document.getElementById("forumheader").innerHTML = "No posts yet!";
-  //     }
-  //     else{
-  //        document.getElementById("forumheader").innerHTML = "";
-  //     }
-  // }
+   for(c = 0; c < postarray.length; c+=1){
+      var node = document.createElement("div");
+
+      //Create timestamp node
+      var datenode = document.createElement("p");
+      datenode.innerHTML = postarray[c][2];
+      datenode.style.display = "inline-block";
+      datenode.style.float = "right";
+      datenode.style.fontSize = "12px";
+
+      //Create namenode
+      var namenode = document.createElement("b");
+      namenode.innerHTML = postarray[c][0] + ":"
+      namenode.style.display = "inline";
+      namenode.style.float = "left";
+
+      //create textnode
+      var textnode = document.createElement("a");
+      textnode.innerHTML = postarray[c][1];
+
+      //append them to node
+      node.appendChild(namenode);
+      node.appendChild(datenode);
+      node.appendChild(document.createElement("br"));
+      node.appendChild(textnode);
+
+      //add node to forum area
+      document.getElementById("forumpost").appendChild(node);
+   }
+
+   var numposts = document.getElementById("forumpost").childNodes.length;
+
+   //console.log(numposts);
+   if(numposts <= 3){
+     document.getElementById("forumheader").innerHTML = "No posts yet!";
+   }
+   else{
+      document.getElementById("forumheader").innerHTML = "";
+   }
+
 }
